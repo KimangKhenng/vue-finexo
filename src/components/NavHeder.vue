@@ -1,21 +1,27 @@
-<template>  
+<template>
   <header class="header_section bg">
     <div class="container-fluid">
-      <nav class="navbar navbar-expand-lg custom_nav-container ">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
         <!-- <a class="navbar-brand" href="index.html"> -->
         <router-link class="navbar-brand" to="/">
-          <span>
-            Finexo
-          </span>
+          <span> Finexo {{ count }} </span>
         </router-link>
         <!-- </a> -->
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class=""> </span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav  ">
+          <ul class="navbar-nav">
             <li class="nav-item" :class="{ active: $route.path == '/' }">
               <!-- <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a> -->
               <router-link class="nav-link" to="/">Home</router-link>
@@ -36,11 +42,24 @@
               <!-- <a class="nav-link" href="team.html">Team</a> -->
               <router-link class="nav-link" to="/team">Team</router-link>
             </li>
+            <li class="nav-item" :class="{ active: $route.path == '/users' }">
+              <!-- <a class="nav-link" href="team.html">Team</a> -->
+              <router-link class="nav-link" to="/users">Users</router-link>
+            </li>
+            <li class="nav-item" :class="{ active: $route.path == '/sign-up' }">
+              <!-- <a class="nav-link" href="team.html">Team</a> -->
+              <router-link class="nav-link" to="/sign-up">Sign Up</router-link>
+            </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
+              <a class="nav-link" href="#">
+                <i class="fa fa-user" aria-hidden="true"></i> Login</a
+              >
+            </li>
+            <li class="nav-item">
+              <button @click="changeLanguage" class="nav-link">Change</button>
             </li>
             <form class="form-inline">
-              <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+              <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
             </form>
@@ -51,8 +70,28 @@
   </header>
 </template>
 
+<script>
+import { useCounterStore } from "@/store/counter";
+import { mapState, mapActions } from "pinia";
+export default {
+  computed: {
+    ...mapState(useCounterStore, ["count"]),
+  },
+  methods: {
+    ...mapActions(useCounterStore, ["increment", "decrement"]),
+    changeLanguage() {
+      if (this.$i18n.locale == "en") {
+        this.$i18n.locale = "km";
+      } else {
+        this.$i18n.locale = "en";
+      }
+    },
+  },
+};
+</script>
+
 <style scope>
-  .bg{
-    background-color: #1c126d;
-  }
+.bg {
+  background-color: #1c126d;
+}
 </style>
