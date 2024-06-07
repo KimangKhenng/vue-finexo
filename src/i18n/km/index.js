@@ -1,6 +1,7 @@
 const traslation_km = {
     message: {
-        hello: 'ជំរៀបសួរ!'
+        hello: 'ជំរៀបសួរ!',
+        age: 'នៅស្ទើណាស់'
     }
 }
 export default traslation_km

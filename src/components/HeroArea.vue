@@ -19,7 +19,7 @@
                       {{ $t("message.hello") }}
                       Crypto <br />
                       Currency {{ count }}<br />
-                      {{ message }}
+                      {{ $t("message.age") }}
                     </h1>
                     <p>
                       Explicabo esse amet tempora quibusdam laudantium, laborum
@@ -117,9 +117,6 @@ import { mapState, mapActions } from "pinia";
 export default {
   computed: {
     ...mapState(useCounterStore, ["count"]),
-    message() {
-      return this.count > 15 ? "You are adult" : "You are too young";
-    },
   },
   data() {
     return {
