@@ -2,8 +2,9 @@
   <section class="why_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
-        <h2>Why Choose <span>Us</span></h2>
+        <h2>Why Choose {{ counter.count }} <span>Us</span></h2>
       </div>
+      <button @click="counter.increment">Increase</button>
       <div class="why_container">
         <div class="box" v-for="(item, index) in items" :key="index">
           <choose-us-item
@@ -20,35 +21,32 @@
   </section>
 </template>
 
-<script>
+<script setup>
+import { ref } from "vue";
 import ChooseUsItem from "./ChooseUsItem.vue";
-export default {
-  components: { ChooseUsItem },
-  data() {
-    return {
-      items: [
-        {
-          imgPath: "/images/w1.png",
-          title: "Expert Management",
-          desc: "Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus",
-        },
-        {
-          imgPath: "/images/w2.png",
-          title: "Secure Investment",
-          desc: "Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus",
-        },
-        {
-          imgPath: "/images/w3.png",
-          title: "Instant Trading",
-          desc: "Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus",
-        },
-        {
-          imgPath: "/images/w4.png",
-          title: "Happy Customers",
-          desc: "Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus",
-        },
-      ],
-    };
+import { useCounterStore } from "@/store/counter";
+
+const counter = useCounterStore();
+const items = ref([
+  {
+    imgPath: "/images/w1.png",
+    title: "Expert Management",
+    desc: "Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus",
   },
-};
+  {
+    imgPath: "/images/w2.png",
+    title: "Secure Investment",
+    desc: "Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus",
+  },
+  {
+    imgPath: "/images/w3.png",
+    title: "Instant Trading",
+    desc: "Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus",
+  },
+  {
+    imgPath: "/images/w4.png",
+    title: "Happy Customers",
+    desc: "Incidunt odit rerum tenetur alias architecto asperiores omnis cumque doloribus aperiam numquam! Eligendi corrupti, molestias laborum dolores quod nisi vitae voluptate ipsa? In tempore voluptate ducimus officia id, aspernatur nihil.Tempore laborum nesciunt ut veniam, nemo officia ullam repudiandae repellat veritatis unde reiciendis possimus animi autem natus",
+  },
+]);
 </script>
