@@ -19,7 +19,6 @@
                       {{ $t("message.hello") }}
                       Crypto <br />
                       Currency {{ count }}<br />
-                      {{ $t("message.age") }}
                     </h1>
                     <p>
                       Explicabo esse amet tempora quibusdam laudantium, laborum
