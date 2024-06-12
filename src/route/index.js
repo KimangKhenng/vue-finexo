@@ -8,6 +8,7 @@ import WhyUs from '@/views/WhyUs.vue'
 import Team from '@/views/Team.vue'
 import SignUp from '@/views/SignUp.vue'
 import Users from '@/views/Users.vue'
+import NotFound from '@/views/NotFound.vue'
 
 const routes = [
     { path: '/', component: Home },
@@ -16,7 +17,8 @@ const routes = [
     { path: '/why-us', component: WhyUs },
     { path: '/team', component: Team },
     { path: '/users', component: Users },
-    { path: '/sign-up', component: SignUp }
+    { path: '/sign-up', component: SignUp },
+    { path: '/:pathMatch(.*)*', component: NotFound }
 ]
 
 const router = createRouter({
