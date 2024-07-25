@@ -19,6 +19,8 @@ jobs:
     - name: Install dependencies
       # Use Unix commands
       run: npm install
+    - name: build frontend
+      run: npm run build
     - name: Deploy to Netlify
       uses: nwtgck/actions-netlify@v3.0
       with:
