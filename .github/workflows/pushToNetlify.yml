@@ -1,0 +1,35 @@
+# .github/workflows/test.yml
+name: Push to Netlify
+# When it's trigger
+on:
+  push:
+    branches: test-dev
+# Tasks
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+    # To clone code to work on
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Set up Node.js 18
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.x
+    - name: Install dependencies
+      # Use Unix commands
+      run: npm install
+    - name: Deploy to Netlify
+      uses: nwtgck/actions-netlify@v3.0
+      with:
+        publish-dir: './dist'
+        production-branch: main
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        deploy-message: "Deploy from GitHub Actions"
+        enable-pull-request-comment: false
+        enable-commit-comment: true
+        overwrites-pull-request-comment: true
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      timeout-minutes: 1
