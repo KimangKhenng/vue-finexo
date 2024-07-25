@@ -18,7 +18,7 @@
                     <h1>
                       {{ $t("message.hello") }}
                       Crypto <br />
-                      Currency {{ count }}<br />
+                      Currency v3 {{ count }}<br />
                     </h1>
                     <p>
                       Explicabo esse amet tempora quibusdam laudantium, laborum
