@@ -3,7 +3,7 @@ name: Push to Netlify
 # When it's trigger
 on:
   push:
-    branches: test-dev
+    branches: main
 # Tasks
 jobs:
   push:
